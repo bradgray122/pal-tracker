@@ -7,7 +7,8 @@ applications:
       - route: pal-tracker-bradley-gray.apps.evans.pal.pivotal.io
     env:
       WELCOME_MESSAGE: Hello from the review environment
-      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 250 } }'
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: 'info,health,palTrackerFailure'
     services:
       - tracker-database
 =======
@@ -27,6 +28,4 @@ applications:
   - tracker-database
   env:
     WELCOME_MESSAGE: Hello from the review environment
-    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 250 } }'
-    MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: 'info,health,palTrackerFailure'
->>>>>>> 0297055... Add production tuning parameters to manifest, autoscaling scripts
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
