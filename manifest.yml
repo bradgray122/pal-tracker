@@ -1,17 +1,5 @@
 ---
 applications:
-<<<<<<< HEAD
-  - name: pal-tracker
-    path: build/libs/pal-tracker.jar
-    routes:
-      - route: pal-tracker-bradley-gray.apps.evans.pal.pivotal.io
-    env:
-      WELCOME_MESSAGE: Hello from the review environment
-      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 250 } }'
-      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: 'info,health,palTrackerFailure'
-    services:
-      - tracker-database
-=======
 - name: pal-tracker
   path: build/libs/pal-tracker.jar
   buildpacks:
@@ -23,9 +11,10 @@ applications:
   health-check-type: port
   timeout: 60
   routes:
-  - route: pal-tracker-${UNIQUE_IDENTIFIER}.${DOMAIN}
+  - route: pal-tracker-bradley-gray.apps.evans.pal.pivotal.io
   services:
   - tracker-database
   env:
     WELCOME_MESSAGE: Hello from the review environment
-    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 250 } }'
+    MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: 'info,health,palTrackerFailure'
